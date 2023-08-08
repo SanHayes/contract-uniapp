@@ -19,7 +19,12 @@
 					<view class="from">
 						<text class="label">{{$t('trade.from')}}</text>
 						<view class="input">
-							<uni-easyinput v-model.number="fromValue" type="digit" :inputBorder="false" :clearable="false" :placeholder="$t('trade.available',{price: 0})"></uni-easyinput>
+							<!--<uni-easyinput v-model.number="fromValue" type="digit" :inputBorder="false" :clearable="false" :placeholder="$t('trade.available',{price: 0})"></uni-easyinput>-->
+              <u-input :value="fromValue" type="number"  border="none" :custom-style="style" :placeholder="$t('trade.available',{price: fromValue})">
+                <template slot="suffix">
+                  <u--text color="#0052ff" :text="$t('trade.all')" @click="withdrawAll" :bold="true" size="12px"></u--text>
+                </template>
+              </u-input>
 							<text class="all" @click="exchangeAll">{{$t('trade.all')}}</text>
 						</view>
 						<view class="unit">
@@ -63,7 +68,7 @@
 					<view class="from">
 						<view class="input">
 							<!--<uni-easyinput v-model="withdrawValue" :inputBorder="false" :clearable="false" :placeholder="$t('trade.available',{price: 0})"></uni-easyinput>-->
-              <u-input :value="withdrawValue" type="number"  border="none" :custom-style="style" :placeholder="$t('trade.available',{price: 0})">
+              <u-input :value="withdrawValue" type="number"  border="none" :custom-style="style" :placeholder="$t('trade.available',{price: withdrawValue})">
                 <template slot="suffix">
                   <u--text color="#0052ff" :text="$t('trade.all')" @click="withdrawAll" :bold="true" size="12px"></u--text>
                 </template>
@@ -272,7 +277,10 @@
 				margin-right: 2.66667vw;
         background-color: #f8f8f8;
         border-radius: 1.6vw;
-
+        border: 1px solid transparent;
+        &:focus-within{
+          border: 1px solid #0052ff;
+        }
 				.all {
 					position: absolute;
 					right: 24rpx;

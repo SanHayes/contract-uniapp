@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar height="96rpx" leftWidth="180rpx" rightWidth="300rpx" :border="false">
+		<uni-nav-bar height="96rpx" leftWidth="140rpx" rightWidth="300rpx" :border="false">
 			<view slot="left">
 				<picker @change="handleChange" :value="value" :range="langArr" range-key="text">
 					<view class="lang">
